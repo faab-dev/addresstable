@@ -4,6 +4,14 @@
     <div id="wrapper">
         <div id="container">
             <div class="b_lang">
+                <div class="btn-group" role="group" aria-label="lang">
+                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')| merge({'_locale': 'en'})) }}" role="button" type="button" class="btn btn-default {% if app.request.attributes.get('_locale') == 'en' %}active{% endif %}">
+                        {% trans %}English{% endtrans %}
+                    </a>
+                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')| merge({'_locale': 'ru'})) }}" role="button" type="button" class="btn btn-default {% if app.request.attributes.get('_locale') == 'ru' %}active{% endif %}">
+                        {% trans %}Russian{% endtrans %}
+                    </a>
+                </div>
             </div>
             <div class="b_table">
                 <div ng-controller="addresstableController as addresstable">

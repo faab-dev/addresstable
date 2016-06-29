@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="country">
+                <source>Country</source>
+                <target>Страна</target>
+            </trans-unit>
+            <trans-unit id="city">
+                <source>City</source>
+                <target>Город</target>
+            </trans-unit>
+            <trans-unit id="postcode">
+                <source>Postcode</source>
+                <target>Индекс</target>
+            </trans-unit>
+            <trans-unit id="street">
+                <source>Street</source>
+                <target>Улица</target>
+            </trans-unit>
+            <trans-unit id="housenumber">
+                <source>House number</source>
+                <target>Номер дома</target>
+            </trans-unit>
+            <trans-unit id="created">
+                <source>Date</source>
+                <target>Дата</target>
+            </trans-unit>
+            <trans-unit id="english">
+                <source>English</source>
+                <target>Английский</target>
+            </trans-unit>
+            <trans-unit id="russian">
+                <source>Russian</source>
+                <target>Русский</target>
+            </trans-unit>
+            <trans-unit id="search_for">
+                <source>Search for..</source>
+                <target>Найти..</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
