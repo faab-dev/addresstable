@@ -16,6 +16,14 @@
                         </div>
                         <div id="slider-range"></div>
                     </script>
+                    <script type="text/ng-template" id="ng-table/filters/created.html">
+                        <div class="input-group">
+                            <input type="text" name="{{ '{{created}}' }}" id="created" readonly style="" ng-disabled="$filterRow.disabled" ng-model="params.filter()[name]" class="input-filter form-control" placeholder="Search for..." daterangepicker>
+                            <span class="input-group-btn">
+                                <button disabled="disabled" class="btn btn-default btn-clear-created" type="button">x</button>
+                            </span>
+                        </div>
+                    </script>
                     <table ng-table="addresstable.tableParams" class="table table-bordered table-striped table-condensed">
                         <tr ng-repeat="row in $data">
                             <td data-title="'Country'" filter="{country: 'text'}" sortable="'country'" ng-style="countryStyle" class="td-country">{{ '{{row.country}}' }}</td>
@@ -23,7 +31,7 @@
                             <td data-title="'Street'" filter="{street: 'text'}" sortable="'street'" ng-style="streetStyle" class="td-street">{{ '{{row.street}}' }}</td>
                             <td data-title="'House number'" filter="{houseNumber: 'ng-table/filters/houseNumber.html'}" sortable="'houseNumber'" ng-style="houseNumberStyle" class="td-housenumber">{{ '{{row.houseNumber}}' }}</td>
                             <td data-title="'Postcode'" filter="{postcode: 'text'}" sortable="'postcode'" ng-style="postcodeStyle" class="td-postcode">{{ '{{row.postcode}}' }}</td>
-                            <td data-title="'Date'" filter="{created: 'text'}" sortable="'created'" ng-style="createdStyle" class="td-created">{{ '{{row.created.date}}' }}</td>
+                            <td data-title="'Date'" filter="{created: 'ng-table/filters/created.html'}" sortable="'created'" ng-style="createdStyle" ng-bind="formatDate(row.created.date)" class="td-created">{{ '{{row.created.date}}' }}</td>
                         </tr>
                     </table>
                 </div>

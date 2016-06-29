@@ -11,6 +11,7 @@
     function setConfigPhaseSettings(ngTableFilterConfigProvider) {
         var filterAliasUrls = {
             "houseNumber": "ng-table/filters/houseNumber.html",
+            "created": "ng-table/filters/created.html"
         };
         ngTableFilterConfigProvider.setConfig({
             aliasUrls: filterAliasUrls
@@ -29,6 +30,13 @@
         
         // set path to for ajax request
         var Api = $resource("/ajax");  
+        
+        // this function is declarated for ngBind attribute in "created"-column
+        $scope.formatDate = function(date){
+            // moment.js - parses, validates, manipulates, and displays dates in JavaScript (http://momentjs.com/)
+            return moment(date,'YYYY-MM-DD HH:mm:ss').format('DD.MM.YY, HH:mm');
+        };
+    
         this.tableParams = new NgTableParams({
             // initial object (json)
             page: 1,                    // show first page
@@ -182,6 +190,45 @@
                         $scope.$apply();
                     });
                 }); 
+            }
+        }
+    }).directive('daterangepicker', function () {
+        // this directive allow to use jQuery UI Slider in custom filter type "created"
+        // jQuery Date Range Picker - jQuery Date Range Picker is a jQuery plugin that allows user to select a date range.
+        // (http://longbill.github.io/jquery-date-range-picker/)
+        return {
+            restrict: 'A',
+            require : 'ngModel',
+            link: function (scope, element, attrs, ngModelCtrl) {
+                $(function(){
+                    var objectConfig = {
+                        separator: ' - ',
+                        autoClose: true,
+                        startOfWeek: 'monday',
+                        format: 'DD.MM.YY, HH:mm',  //more formats at http://momentjs.com/docs/#/displaying/format/
+                        time: {
+                    		enabled: true
+                    	}
+                    };
+                    $('#created').dateRangePicker(objectConfig).bind('datepicker-change',function(event,object){
+                        // This event will be triggered before date range picker close animation 
+                        $(this).next('span.input-group-btn').children('button.btn').removeAttr('disabled');
+                        var arrayDatetime = object.value.split(" - ");
+                        var formattedDatetime1 = moment(arrayDatetime[0], 'DD.MM.YY, HH:mm').format('YYYY-MM-DD HH:mm');
+                        var formattedDatetime2 = moment(arrayDatetime[1], 'DD.MM.YY, HH:mm').format('YYYY-MM-DD HH:mm');
+                        ngModelCtrl.$setViewValue(formattedDatetime1+'/'+formattedDatetime2);
+                        scope.$apply();
+                        $("#created").val(object.value);
+                    });
+                    // if "clear button" is clicked make text field empty 
+                    $('.btn-clear-created').click(function(event){
+                        event.stopPropagation();
+                        $('#created').data('dateRangePicker').clear();
+                        $('#created').val('');
+                        $(this).attr('disabled', 'disabled');
+                        ngModelCtrl.$setViewValue('');
+                    });
+                });
             }
         }
     });

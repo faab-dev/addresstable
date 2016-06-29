@@ -75,6 +75,14 @@ class DefaultController extends Controller
             ->where('a.houseNumber BETWEEN :houseNumberMin AND :houseNumberMax')
             ->setParameter('houseNumberMin', $houseNumber[0])
             ->setParameter('houseNumberMax', $houseNumber[1]);
+            
+        if(isset($filters['created'])){
+            $created = explode("/", urldecode($filters['created']));
+            $query = $query
+                ->andWhere('a.created BETWEEN :createdMin AND :createdMax')
+                ->setParameter('createdMin', $created[0])
+                ->setParameter('createdMax', $created[1]);
+        }
         
         // @TODO work out other filters
         
