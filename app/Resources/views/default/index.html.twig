@@ -7,6 +7,14 @@
             </div>
             <div class="b_table">
                 <div ng-controller="addresstableController as addresstable">
+                    <script type="text/ng-template" id="ng-table/filters/text.html">
+                        <div class="input-group">
+                            <input type="text" name="{{ '{{name}}' }}" style="" ng-model="params.filter()[name]" class="input-filter input-filter-text form-control" placeholder="Search for.." text>
+                            <span class="input-group-btn">
+                                <button disabled="disabled" class="btn btn-default btn-clear-text" type="button" ng-click="clearTextFilter(name)">x</button>
+                            </span>
+                        </div>
+                    </script>
                     <script type="text/ng-template" id="ng-table/filters/houseNumber.html">
                         <div class="input-group">
                             <input type="text" name="{{ '{{houseNumber}}' }}" id="houseNumber" readonly style="border:0; color:#f6931f; font-weight:bold;" ng-disabled="$filterRow.disabled" ng-model="params.filter()[name]" class="input-filter form-control" slider>

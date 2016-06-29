@@ -84,9 +84,34 @@ class DefaultController extends Controller
                 ->setParameter('createdMax', $created[1]);
         }
         
-        // @TODO work out other filters
+        if(isset($filters['country'])){
+            $query = $query
+                ->andWhere('co.value LIKE :country_value')
+                ->setParameter('country_value', '%'.urldecode($filters['country']).'%');
+        }
         
-        // @TODO work out sorting
+        if(isset($filters['city'])){
+            $query = $query
+                ->andWhere('c.value LIKE :city_value')
+                ->setParameter('city_value', '%'.urldecode($filters['city']).'%');
+        }
+        
+        if(isset($filters['street'])){
+            $query = $query
+                ->andWhere('s.value LIKE :street_value')
+                ->setParameter('street_value', '%'.urldecode($filters['street']).'%');
+        }
+        
+        if(isset($filters['postcode'])){
+            $query = $query
+                ->andWhere('p.value LIKE :postcode_value')
+                ->setParameter('postcode_value', '%'.urldecode($filters['postcode']).'%');
+        }
+        
+        if(isset($sorting)){
+            $query = $query
+            ->orderBy(key($sorting), array_values($sorting)[0]);
+        }
         
         // total amount of rows -> required by pagination in ng-table  
         $result['inlineCount'] = count($query->getQuery()->getResult());

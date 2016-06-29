@@ -10,6 +10,7 @@
     setConfigPhaseSettings.$inject = ["ngTableFilterConfigProvider"];
     function setConfigPhaseSettings(ngTableFilterConfigProvider) {
         var filterAliasUrls = {
+            "text": "ng-table/filters/text.html",
             "houseNumber": "ng-table/filters/houseNumber.html",
             "created": "ng-table/filters/created.html"
         };
@@ -190,6 +191,31 @@
                         $scope.$apply();
                     });
                 }); 
+            }
+        }
+    }).directive('text', function () {
+        // this directive allow to use "clear button" in custom filters type "text"
+        return {
+            restrict: 'A',
+            require : 'ngModel',
+            link: function ($scope, element, attrs, ngModelCtrl) {
+                $(function(){       
+                    // if text field is empty disable "clear button" 
+                    $('.input-filter-text').bind("keyup focusout", function(){            
+                        if(this.value.length<1){
+                            $(this).next('span.input-group-btn').children('button.btn').attr('disabled', 'disabled'); 
+                        }else{
+                            $(this).next('span.input-group-btn').children('button.btn').removeAttr('disabled');
+                        }
+                    });
+                    // if "clear button" is clicked make text field empty 
+                    $('.btn-clear-text').click(function(){
+                        $(this).attr('disabled', 'disabled');
+                        $(this).parent('span.input-group-btn').prev('input.input-filter-text').val('');
+                        ngModelCtrl.$setViewValue('');
+                        $scope.$apply();
+                    });
+               	}); 
             }
         }
     }).directive('daterangepicker', function () {
