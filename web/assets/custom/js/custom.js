@@ -13,7 +13,9 @@
         // set path to for ajax request
         var Api = $resource("/ajax");  
         this.tableParams = new NgTableParams({
-            // @TODO initial object (json)
+            // initial object (json)
+            page: 1,                    // show first page
+            count: 100,                 // count per page
         }, {
             getData: function(params) {
                 // ajax request to api

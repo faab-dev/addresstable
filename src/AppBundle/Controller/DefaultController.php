@@ -45,16 +45,39 @@ class DefaultController extends Controller
     {
         $request = Request::createFromGlobals();
         
-        // @TODO: work out this ajaxAction
+        $count = $request->query->get('count');
+        $page = $request->query->get('page');
+        $sorting = $request->query->get('sorting');
+        // @TODO work out filters
         
         // init an array, which will be encoded to json format  
         $result = [];
         
+        $repository = $this->getDoctrine()->getRepository('AcmePostBundle:Address');
+        
+        $query = $repository->createQueryBuilder('a')->select('co.value AS country', 'c.value as city', 
+                's.value as street', 
+                'a.houseNumber as houseNumber', 
+                'p.value as postcode', 
+                'a.created as created')
+            ->join('a.street', 's')
+            ->join('a.postcode', 'p')
+            ->join('p.city', 'c')
+            ->join('c.country', 'co');
+        
+        // @TODO work out filters
+        
+        // @TODO work out sorting
+        
         // total amount of rows -> required by pagination in ng-table  
-        $result['inlineCount'] = 0;
+        $result['inlineCount'] = count($query->getQuery()->getResult());
             
         // content data
-        $result['results'] = [];
+        $result['results'] = $query
+            ->setFirstResult(($page-1)*100)
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getResult();
         
         return new Response(json_encode($result));
 
