@@ -1,0 +1,15 @@
+{
+  "name": "addresstable",
+  "homepage": "https://github.com/faab-dev/addresstable",
+  "authors": [
+    "faab-dev <faab@yandex.ru>"
+  ],
+  "description": "Symfony AngularJS Project",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.7"
+  }
+}
