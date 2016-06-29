@@ -1,0 +1,4 @@
+services:
+#    acme_post.example:
+#        class: Acme\PostBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
