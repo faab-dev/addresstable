@@ -9,12 +9,12 @@
                 <div ng-controller="addresstableController as addresstable">
                     <table ng-table="addresstable.tableParams" class="table table-bordered table-striped table-condensed">
                         <tr ng-repeat="row in $data">
-                            <td data-title="'Country'" filter="{country: 'text'}" sortable="'country'" class="td-country">{{ '{{row.country}}' }}</td>
-                            <td data-title="'City'" filter="{city: 'text'}" sortable="'city'" class="td-city">{{ '{{row.city}}' }}</td>
-                            <td data-title="'Street'" filter="{street: 'text'}" sortable="'street'" class="td-street">{{ '{{row.street}}' }}</td>
-                            <td data-title="'House number'" filter="{houseNumber: 'text'}" sortable="'houseNumber'" class="td-housenumber">{{ '{{row.houseNumber}}' }}</td>
-                            <td data-title="'Postcode'" filter="{postcode: 'text'}" sortable="'postcode'" class="td-postcode">{{ '{{row.postcode}}' }}</td>
-                            <td data-title="'Date'" filter="{created: 'text'}" sortable="'created'" class="td-created">{{ '{{row.created.date}}' }}</td>
+                            <td data-title="'Country'" filter="{country: 'text'}" sortable="'country'" ng-style="countryStyle" class="td-country">{{ '{{row.country}}' }}</td>
+                            <td data-title="'City'" filter="{city: 'text'}" sortable="'city'" ng-style="cityStyle" class="td-city">{{ '{{row.city}}' }}</td>
+                            <td data-title="'Street'" filter="{street: 'text'}" sortable="'street'" ng-style="streetStyle" class="td-street">{{ '{{row.street}}' }}</td>
+                            <td data-title="'House number'" filter="{houseNumber: 'text'}" sortable="'houseNumber'" ng-style="houseStyle" class="td-housenumber">{{ '{{row.houseNumber}}' }}</td>
+                            <td data-title="'Postcode'" filter="{postcode: 'text'}" sortable="'postcode'" ng-style="postcodeStyle" class="td-postcode">{{ '{{row.postcode}}' }}</td>
+                            <td data-title="'Date'" filter="{created: 'text'}" sortable="'created'" ng-style="createdStyle" class="td-created">{{ '{{row.created.date}}' }}</td>
                         </tr>
                     </table>
                 </div>
