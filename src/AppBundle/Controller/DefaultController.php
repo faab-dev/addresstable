@@ -33,9 +33,30 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
+    }
+    
+    /**
+     * @Route("/ajax", name="ajax")
+     */
+    public function ajaxAction(Request $request)
+    {
+        $request = Request::createFromGlobals();
+        
+        // @TODO: work out this ajaxAction
+        
+        // init an array, which will be encoded to json format  
+        $result = [];
+        
+        // total amount of rows -> required by pagination in ng-table  
+        $result['inlineCount'] = 0;
+            
+        // content data
+        $result['results'] = [];
+        
+        return new Response(json_encode($result));
+
     }
 }

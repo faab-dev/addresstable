@@ -10,6 +10,8 @@
   "dependencies": {
     "jquery": "^3.0.0",
     "bootstrap": "^3.3.6",
-    "angular": "^1.5.7"
+    "angular": "^1.5.7",
+    "ng-table": "^1.0.0",
+    "angular-resource": "^1.5.7"
   }
 }
