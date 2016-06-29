@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/vendor/ng-table/dist/ng-table.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/custom/css/custom.css') }}">
@@ -17,6 +18,9 @@
             <script src="{{ asset('assets/vendor/angular/angular.min.js') }}"></script>
             <script src="{{ asset('assets/vendor/angular-resource/angular-resource.js') }}"></script>
             <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/jquery-ui/ui/minified/widget.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/jquery-ui/ui/minified/mouse.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/jquery-ui/ui/minified/slider.min.js') }}"></script>
             <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
             <script src="{{ asset('assets/vendor/ng-table/dist/ng-table.min.js') }}"></script>
             <script src="{{ asset('assets/custom/js/custom.js') }}"></script>

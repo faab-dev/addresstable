@@ -5,6 +5,23 @@
     // The ngTable is simple table with sorting and filtering on AngularJS http://ng-table.com/
     var app = angular.module("myApp", ["ngTable", "ngResource"]);
     
+    // "custom filters" configuration in ng table module
+    app.config(setConfigPhaseSettings);
+    setConfigPhaseSettings.$inject = ["ngTableFilterConfigProvider"];
+    function setConfigPhaseSettings(ngTableFilterConfigProvider) {
+        var filterAliasUrls = {
+            "houseNumber": "ng-table/filters/houseNumber.html",
+        };
+        ngTableFilterConfigProvider.setConfig({
+            aliasUrls: filterAliasUrls
+        });
+        // optionally set a default url to resolve alias names that have not been explicitly registered
+        // if you don't set one, then 'ng-table/filters/' will be used by default
+        ngTableFilterConfigProvider.setConfig({
+            defaultBaseUrl: "ng-table/filters/"
+        });
+    }
+    
 
     app.controller("addresstableController", function($scope, NgTableParams, $resource) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
@@ -16,6 +33,9 @@
             // initial object (json)
             page: 1,                    // show first page
             count: 100,                 // count per page
+            filter: {
+                houseNumber: '1-149' // min and max values for slider-filter (house numbers)
+            },   
         }, {
             getData: function(params) {
                 // ajax request to api
@@ -127,6 +147,43 @@
             }
         });
     
+    }).directive('slider', function () {
+        // this directive allow to use JQuery UI Slider in custom filter type "houseNumber"
+        // JQuery UI Slider allow select a numeric values by dragging a handle
+        // (http://jqueryui.com/slider/)
+        return {
+            restrict: 'A',
+            require : 'ngModel',
+            link: function ($scope, element, attrs, ngModelCtrl) {
+                $(function(){
+                    $("#slider-range").slider({
+                        range: true,
+                        min: 1,
+                        max: 149,
+                        values: [ 1,149],
+                        slide: function(event, ui) {
+                            if(ui.values[0] == 1 && ui.values[1] == 149){
+                                $('#houseNumber').next('span.input-group-btn').children('button.btn').attr('disabled', 'disabled');
+                            }else{
+                                $('#houseNumber').next('span.input-group-btn').children('button.btn').removeAttr('disabled');
+                            }
+                            $("#houseNumber").val(ui.values[0]+"-"+ui.values[1]);
+                            ngModelCtrl.$setViewValue(ui.values[0]+"-"+ui.values[1]);
+                            $scope.$apply(); 
+                        }
+                    });
+                    $("#houseNumber").val($("#slider-range").slider("values",0)+"-"+$("#slider-range").slider("values",1));
+               	    // if "clear button" is clicked, then init slider values 
+                    $('.btn-clear-housenumber').click(function(){
+                        $(this).attr('disabled', 'disabled');
+                        $("#houseNumber").val('1-149');
+                        $("#slider-range").slider( "option", "values", [1,149]);
+                        ngModelCtrl.$setViewValue('');
+                        $scope.$apply();
+                    });
+                }); 
+            }
+        }
     });
 
 

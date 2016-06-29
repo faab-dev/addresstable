@@ -12,6 +12,7 @@
     "bootstrap": "^3.3.6",
     "angular": "^1.5.7",
     "ng-table": "^1.0.0",
-    "angular-resource": "^1.5.7"
+    "angular-resource": "^1.5.7",
+    "jquery-ui": "jqueryui#^1.11.4"
   }
 }

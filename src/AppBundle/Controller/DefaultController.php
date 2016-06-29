@@ -48,7 +48,13 @@ class DefaultController extends Controller
         $count = $request->query->get('count');
         $page = $request->query->get('page');
         $sorting = $request->query->get('sorting');
-        // @TODO work out filters
+        $filters = $request->query->get('filter');
+        
+        if(isset($filters['houseNumber'])){
+            $houseNumber = explode("-", $filters['houseNumber']);
+        }else{
+            $houseNumber = array(1, 150);
+        }
         
         // init an array, which will be encoded to json format  
         $result = [];
@@ -64,8 +70,13 @@ class DefaultController extends Controller
             ->join('a.postcode', 'p')
             ->join('p.city', 'c')
             ->join('c.country', 'co');
+            
+        $query = $query
+            ->where('a.houseNumber BETWEEN :houseNumberMin AND :houseNumberMax')
+            ->setParameter('houseNumberMin', $houseNumber[0])
+            ->setParameter('houseNumberMax', $houseNumber[1]);
         
-        // @TODO work out filters
+        // @TODO work out other filters
         
         // @TODO work out sorting
         
