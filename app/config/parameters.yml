@@ -2,11 +2,11 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: symfony
-    database_user: root
-    database_password: null
+    database_name: DEV_symfony
+    database_user: admin
+    database_password: root
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    secret: 04c39490c6eb16a36189279bb41afcd41ad79b75
+    secret: 7210db36591e1ebc9e0499537cc8681a07856333
