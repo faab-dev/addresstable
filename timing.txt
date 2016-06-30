@@ -1,0 +1,29 @@
+Изучение документации
+
+The Symfony Book: Controllers, Routing, Doctrine, Templating, Translation - 90min
+
+Developer Guide AngularJS: Controllers, Directives, Scopes, Modules. 2-ое суток
+
+ng-table: Loading data - External array, Pagination, Custom Filter Templating, Sorting. 60min
+
+Slider JQuery UI, JQuery Date Time Picker,  MomentJS - 60 min
+
+
+
+
+Программирование:
+
+
+Архитектура БД - разработка сущностей "Страна", "Город", "Индекс", "Улица", "Адрес"  180мин
+
+ng-table - загрузка массива изнутри - 2суток (!!!)- много времени заняла ошибка с подключением направильного модуля: вместо модуля "angular-resource" я подключил модуль "ngResource".
+
+ng-table Кастом Слайдер фильтр - 120мин
+
+ng-table Кастом Датапикер фильтр - 150мин
+
+ng-table Кастом Фильтр Текст, форматирование даты, пагинация - 90мин
+
+Symfony Translation - 40мин.
+
+Генерирование содержимого базы данных БД в 100,000 (сто тысяч) строк, не миллион как указано в ТЗ.  - 2-ое суток 
