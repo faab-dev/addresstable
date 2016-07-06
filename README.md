@@ -1,21 +1,21 @@
 # addresstable
-Техничкское задание от SimbirSoft
+РўРµС…РЅРёС‡РєСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ SimbirSoft
 
-Установка. 
+РЈСЃС‚Р°РЅРѕРІРєР°. 
 
-1) Склонируйте этот репозиторий в папку с проектами Symfony. Например: 
+1) РЎРєР»РѕРЅРёСЂСѓР№С‚Рµ СЌС‚РѕС‚ СЂРµРїРѕР·РёС‚РѕСЂРёР№ РІ РїР°РїРєСѓ СЃ РїСЂРѕРµРєС‚Р°РјРё Symfony. РќР°РїСЂРёРјРµСЂ: 
 git clone git://github.com/faab-dev/addresstable.git 
 
-2) Создайте базу данных DEV_addresstable . Например:
+2) РЎРѕР·РґР°Р№С‚Рµ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… DEV_addresstable . РќР°РїСЂРёРјРµСЂ:
 mysql -u root -p
 mysql> CREATE DATABASE DEV_addresstable;
 
-3) Импортируйте в базу данных DEV_addresstable файл dev_addresstable.sql , который находится в папке addresstable/db/ . Например:
+3) РРјРїРѕСЂС‚РёСЂСѓР№С‚Рµ РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… DEV_addresstable С„Р°Р№Р» dev_addresstable.sql , РєРѕС‚РѕСЂС‹Р№ РЅР°С…РѕРґРёС‚СЃСЏ РІ РїР°РїРєРµ addresstable/db/ . РќР°РїСЂРёРјРµСЂ:
 mysql -u root -p DEV_addresstable < addresstable/db/dev_addresstable.sql
 
-4) Откройте и отредактируйте, если нужно, настройки базы данных в файле addresstable/app/config/parameters.yml 
+4) РћС‚РєСЂРѕР№С‚Рµ Рё РѕС‚СЂРµРґР°РєС‚РёСЂСѓР№С‚Рµ, РµСЃР»Рё РЅСѓР¶РЅРѕ, РЅР°СЃС‚СЂРѕР№РєРё Р±Р°Р·С‹ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»Рµ addresstable/app/config/parameters.yml 
 
-5) Зайдите через коммандную строку в корневую папку addresstable и запустите слудующую комманду:
+5) Р—Р°Р№РґРёС‚Рµ С‡РµСЂРµР· РєРѕРјРјР°РЅРґРЅСѓСЋ СЃС‚СЂРѕРєСѓ РІ РєРѕСЂРЅРµРІСѓСЋ РїР°РїРєСѓ addresstable Рё Р·Р°РїСѓСЃС‚РёС‚Рµ СЃР»СѓРґСѓСЋС‰СѓСЋ РєРѕРјРјР°РЅРґСѓ:
 php bin/console server:run
 
 
